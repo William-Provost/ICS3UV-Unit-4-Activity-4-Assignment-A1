@@ -1,29 +1,38 @@
-// Author: William Provost
-// Version: 1.0.0
-// Date: 2025-12-02
-// Fileoverview: This program is a guessing Game using functions.
+/**
+ * @author William Provost
+ * @version 1.0.0
+ * @date 2025-12-07
+ * @fileoverview This program is a guessing Game using functions.
+ */
 
-// function to generate random integer 1–10
-function generateRandom(): number {
-  return Math.floor(Math.random() * 10) + 1;
-}
-
+// welcome message
 console.log("Welcome to the Guessing Game!");
 console.log("Guess a number between 1 and 10. Enter 0 to quit.");
 
-let randomNumber = generateRandom();
-let guess = Number(prompt("Enter your guess: "));
+// generate random number between 1 and 10
+const randomNumber: number = Math.floor(Math.random() * 10) + 1;
 
-// main loop
-while (guess !== 0 && guess !== randomNumber) {
-  console.log("Try again.");
-  guess = Number(prompt("Enter your guess: "));
-}
+// variable to store user guess
+let userGuess: number = -1;
 
-if (guess === 0) {
-  console.log("Game ended. Goodbye!");
-} else {
-  console.log(`Congratulations! You guessed the correct number: ${randomNumber}`);
+// start the guessing loop
+while (userGuess !== 0 && userGuess !== randomNumber) {
+  // get user input
+  userGuess = Number(prompt("Enter your guess: "));
+
+  // check if user wants to quit
+  if (userGuess === 0) {
+    console.log("You chose to quit. Goodbye!");
+    break;
+  }
+
+  // compare guess with random number
+  if (userGuess === randomNumber) {
+    console.log(`Congratulations! You guessed the correct number: ${randomNumber}`);
+    break;
+  } else {
+    console.log("Try again.");
+  }
 }
 
 console.log("\nDone.");
